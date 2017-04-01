@@ -1,0 +1,83 @@
+/*news.css*/
+.news {
+	position: fixed;
+	right: 0;
+	top: 0;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 45px 3% 180px 3%;
+	background-color: rgba(0,0,0,.6);
+	color: white;
+	width: 25%;
+	min-width: 400px; 
+	text-align: left;
+	z-index: -8;
+	overflow: scroll;
+	opacity: 0; 
+	right: -26%; 
+	transition: all .3s;
+	color: rgba(255,255,255,.9);
+
+
+/*	scrollbar-face-color: #cdcdcd;
+	scrollbar-track-color: rgba(0,0,0,.8);
+	scrollbar-arrow-color: rgba(0,0,0,.8);
+	scrollbar-shadow-color: rgba(0,0,0,.8);
+	scrollbar-track-color: #000\9;
+	scrollbar-arrow-color: #000\9;
+	scrollbar-shadow-color: #000\9;*/
+}
+.news-container {
+	transition: all .5s; 
+}
+
+.news-container > h1 {
+	font-size: 20px;
+	margin-top: 1em; 
+}
+.news-container > span {
+	font-size: 12px;
+	color: #BBB;
+}
+.news-container > p {
+	font-size: 12px; 
+	margin: 1em 0; 
+	text-align: justify;
+}
+
+.news-relative {
+	padding-left: 1em; 
+}
+
+.news-relative > li {
+	margin-bottom: 1.5em; 
+	padding-left: 8px; 
+	position: relative;
+}
+
+.news-relative > li > h3 {
+	font-size: 14px; 
+	text-decoration: underline;
+	cursor: pointer;
+}
+.news-relative > li > h3:hover {
+	color: white; 
+}
+.news-relative > li > h3:after {
+	content: " >>"; 
+	font-family: consolas;
+	color: #7B7; 
+}
+.news-relative > li:before {
+	content: ""; 
+	height: 2em; 
+	position: absolute;
+	left: 0; 
+	top: .5em;
+	border-left: 1px solid;
+}
+
+.news-relative > li > p {
+	font-size: 12px; 
+	text-align: justify;
+}

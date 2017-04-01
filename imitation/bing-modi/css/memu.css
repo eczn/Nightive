@@ -1,0 +1,73 @@
+/*memu.css*/
+.memu-container {
+	display: block;
+	position: fixed;
+	width: 20%;
+	min-width: 200px;
+	max-width: 280px;
+	
+	right: 0;
+	top: 45px;
+	background-color: #FFF;
+	color: #444;
+	margin: 0 5%;
+
+	/*padding: 0 20px;*/
+	height: 0px; 
+	/*height: 340px;*/
+	
+    overflow: hidden;
+    transition: all .4s; 
+}
+
+
+/*.memu-btn {
+	height: 40px;
+	width: 40px; 
+	display: inline-block;
+	position: fixed;
+	right: 5%; 
+	top: 0; 
+	opacity: 0; 
+}*/
+
+/*.memu-btn:checked ~ .memu-container {
+    height: 340px;
+}*/
+
+.auto-height {
+	height: auto!important; 
+}
+
+
+.memu-container ul {
+	padding: 20px; 
+	list-style-type: none;
+}
+
+.memu-container ul > li {
+	height: 50px; 
+	box-sizing: border-box;
+	padding: 15px 20px;
+	position: relative;
+	overflow: hidden;
+	transition: all .4s; 
+}
+
+.memu-container ul > li > p,  .memu-container ul > li > span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.memu-container ul > li > p {
+	margin-left: 10px;	
+}
+
+.memu-container li > ul > li, .memu-container li > ul {
+	padding-left: 0;
+	padding-right: 0; 
+}
+
+.sub-btns:checked + li {
+	height: 100px;
+}
