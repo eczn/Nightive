@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>left.js</title>
+	<script src="/lib/jquery.min.js"></script>
+	<script src="js/left.js"></script>
+</head>
+<style>
+	* {
+		margin: 0;
+		left: 0;
+	}
+
+	html {
+		background-color: #EEE;
+	}
+	
+	body {
+		max-width: 500px;
+		padding: 0 32px 32px 32px;
+		margin: 0 auto 196px auto;
+		background-color: #FFF;
+		color: #445;
+		box-shadow: 0 16px 4px -8px rgba(0,0,0,.2);
+		font-family: consolas;
+		font-size: 0;
+		text-align: center;
+	}
+
+	body > * {
+		font-size: 16px;
+	}
+
+	.asd {
+		width: 100px; 
+		height: 100px; 
+		background-color: #9A9; 
+		display: inline-block;
+		margin: 1em 2em; 
+		font-size: 24px;
+		color: white; 
+		line-height: 100px; 
+		border-radius: 4px; 
+	}
+	.bg-red {
+		background-color: #A99!important; 
+	}
+</style>
+<body>
+	<div class="asd t">1</div>
+	<div class="asd">2</div>
+	<div class="asd">3</div>
+	<div class="asd">4</div>
+	<div class="asd">5</div>
+	<div class="asd">6</div>
+</body>
+<script>
+	var l = L('.asd'); 
+</script>
+</html>
