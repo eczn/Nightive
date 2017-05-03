@@ -1,0 +1,23 @@
+/*todo.css*/
+.container {
+	max-width: 700px;
+	margin: 0 auto; 
+}
+
+.tool-block {
+	display: inline-block;
+	vertical-align: top;
+	background-color: #BBB;
+	width: 45%;
+	margin: 1.5% 2.5%;
+	padding: 1% 2%;
+	box-sizing: border-box;
+}
+
+.todo-commit > input {
+	display: inline-block;
+}
+
+#commit {
+	display: block;
+}
