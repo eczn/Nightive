@@ -1,23 +1,86 @@
 /*todo.css*/
+html {
+	background-color: #333; 
+}
+
 .container {
-	max-width: 700px;
-	margin: 0 auto; 
+	position: fixed;
+	height: 100%;
+	max-width: 320px;
+	/* margin: 0 auto; */
+	left: 0;
+	font-size: 0;
+	top: 0;
+	overflow-y: auto;
 }
 
 .tool-block {
 	display: inline-block;
+	position: relative;
 	vertical-align: top;
-	background-color: #BBB;
-	width: 45%;
-	margin: 1.5% 2.5%;
+	/*background-color: #BBB;*/
+	background-color: rgba(255, 255, 255, .5);
+	width: 92%;
+	margin: 5% 4% 0 4%;
 	padding: 1% 2%;
 	box-sizing: border-box;
 }
 
-.todo-commit > input {
+.todo-commit > input, .todo-commit > textarea {
 	display: inline-block;
+	background-color: #333;
+	border: none; 
+	color: rgba(255, 255, 255,.65); 
 }
 
 #commit {
 	display: block;
+}
+
+
+.todo > .title {
+	font-size: 2rem; 
+}
+
+.todo > .content {
+	font-size: 1.1rem; 
+	line-height: 2; 
+	margin-bottom: 1em; 
+}
+
+.todo > .datetime, .todo > .create-at {
+	font-size: 10px;
+}
+
+.todo > .create-at {
+	text-align: right;
+}
+
+.commit-btn {
+	font-size: 0;
+	display: block; 
+	position: relative;
+	display: inline-block;
+	height: 240px; 
+	width: 240px;
+}
+
+.commit-btn:after, .commit-btn:before {
+	content: ""; 
+	position: absolute;
+	background: #333;
+}
+
+.commit-btn:after {
+	width: 8px; 
+	height: 65%;
+	top: 17.5%;
+	left: calc(50% - 4px);
+}
+
+.commit-btn:before {
+	height: 8px; 
+	width: 65%;
+	left: 17.5%;
+	top: calc(50% - 4px);;
 }
