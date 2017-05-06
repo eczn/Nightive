@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jClock demo</title>
+</head>
+<style>
+	html {
+		background-color: #333;
+	}
+
+	#clock {
+		margin: 0 auto; 
+		display: block;
+	}
+</style>
+<body>
+	<canvas id="clock"></canvas>
+	<script src="jClock.js"></script>
+	<script>
+		var myClock = new jClock({
+			canvasId: 'clock', 
+			clockHight: window.innerWidth * 0.3, 
+			clockWidth: window.innerWidth * 0.3
+		});
+	</script>
+</body>
+</html>
