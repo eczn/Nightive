@@ -14,6 +14,7 @@ var LS = (function(ls){
 	LSP.add = function(e){
 		var o = this.get(); 
 		e.__createAt = new Date(); 
+		e.__id = +(new Date()); 
 		o.push(e); 
 		this.set(o); 
 
