@@ -38,3 +38,50 @@ var s = {
 		"b":1
 	}
 }
+
+// var r = Q(`
+// (
+//     (let [temp 5])
+//     (
+// 		(let [
+// 			f (lambda (x) (* x temp))
+// 		])
+// 		(+ 1 (f (++ temp)))
+//     )
+// )
+// `);
+
+
+var QInfo = console.log.bind(console, '>>>>'); 
+
+// QInfo('Q-lang:')
+// QInfo(r); 
+
+
+// QInfo(
+// Q(`
+
+// (
+// 	(let [
+// 		n (lambda (x) ( if (> x 0) (* x (n (-- x))) 1 ))
+// 	])
+// 	(n 3)
+// )
+
+// `)
+// )
+
+QInfo(
+Q(`
+
+(
+	(let [
+		dd (lambda (x) (if (<= x 0) -1 1))
+	])
+	(dd -5)
+)
+
+`)
+)
+
+// (* x (n (-- x)))

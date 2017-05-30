@@ -2,7 +2,7 @@ var keysTo = [
 	'o', 'a', 'b', 'c', 'd', 'e', 'f', 'g'
 ]
 
-var parseToArr = str => str.split('').reduce((acc, cur) => {
+var parseToArr = str => str.split('\t').join(' ').split('').reduce((acc, cur) => {
 	if (cur === '(' || cur === '['){
 		acc.push(' '); 
 		acc.push(cur); 
@@ -82,21 +82,15 @@ var calc = tree => {
 	let oType = typeof tree.o;
 
 	if (oType === 'object'){ // 说明该节点不是表达式 而是声明 
-		// 这里修改作用域 
-		// tree.o 原本应该是函数名 应该 typeof 出来是 string 
-		// 这里是 object 说明应该是 let 关键字 
-		// 调用 scopeCalc 去处理作用域 
 		scopeCalc(tree.o); 
 		
-		// 如果存在下一个S-表达式 则继续递归树 
 		if (tree.a) {
 			let returnVal = calc(tree.a);
-			pop(); 
+			// pop(); 
 			return returnVal; 
 		}
 	} else if (oType === 'string') {
 		push(Object.create(null));
-		// 以下的代码可能有些晦涩 
 		// 主要是实现多参函数而写的 
 		// 简单的四则运算都是两个参数 都是函数 被定义在全局上 
 		// 但是实际情况中 o 的参数列表可能不只两个 
@@ -107,8 +101,14 @@ var calc = tree => {
 		// 这段执行完后得到结果是 vals 
 		// vals 的结构类似这样： [函数, 值, 值, 值 .... ] 长度取决于 keysTo.length 
 		// 注意有 .slice(1) 
-		var vals = keysTo.slice(1).filter(key => tree[key]).map((cur, idx, its) => {
+
+		// console.group('tree');
+		// print(tree)
+		// console.groupEnd()
+
+		var vals = keysTo.slice(1).filter(key => tree[key] !== undefined).map((cur, idx, its) => {
 			// 取出键名 比如 tree.a tree.b 等等 
+
 			let t = tree[cur]
 				// is_ns: t 是数字或者变量吗？ 
 			  , is_ns = typeof t === 'number' || typeof t === 'string'
@@ -117,26 +117,33 @@ var calc = tree => {
 			  , keyInTree = tree[its[idx]]
 
 			if (is_ns){
-				return find(keyInTree)
+				// console.group('栈');
+				// console.log('ERROR', keyInTree);
+				// scopes.forEach(print)
+				// console.groupEnd()
+				return find(keyInTree); 
 			} else {
 				let returnVal = calc(keyInTree); 
-				pop(); 
+				// pop(); 
 				return returnVal; 
 			}
 		}); 
 
-		// 从这里可以看出一个一个参数的传递 
-		// 换言之 Q-lang 只接受柯里化的函数 
-
 		if (o.o === 'lambda'){
+			// lambda 的处理 
 			let lambda = treeToArr(o);
 			let list = treeToArr(lambda[1]); 
 
 			// 创建一个作用域 
 			let newScope = list.reduce((acc, name, idx) => {
+
 				acc[name] = vals[idx]; 
 				return acc; 
 			}, Object.create(null)); 
+
+			console.log('lambda', lambda); 
+			console.log('list', list);
+			console.log('newScope:', newScope);
 
 			
 			// 把新作用域压入栈 
@@ -144,18 +151,27 @@ var calc = tree => {
 
 			var returnVal = calc(lambda[2]);
 
-			pop(); 
+			// pop(); 
 
-			console.log('newScope:', newScope)
-			console.log('returnVal:', returnVal);
+			// console.log('newScope:', newScope)
+			// console.log('returnVal:', returnVal);
 
 			return returnVal;
 		} else {
+			// 从这里可以看出一个一个参数的传递 
+			// 换言之 Q-lang 只接受柯里化的函数 
+
+
 			let returnVal = vals.reduce((acc, val) => {
 				return acc(val); 
 			}, o); 
 
-			pop();
+			console.group(tree);
+			console.log('CALC', [returnVal, '<<<<', tree.o].concat(vals));
+			scopes.forEach(print);
+			console.groupEnd('One')
+
+			// pop();
 			return returnVal;
 		}
 	}
@@ -173,27 +189,12 @@ var scopeCalc = todo => {
 			if (idx % 2 === 0){ // 偶数
 				let key = item
 				  , val = its[idx + 1]; 
-
-				if (typeof val !== 'number'){
-					// 说明是 lambda 表达式 
-					console.log('key: ', key, 'val:', val); 
-				}
 				
 				add(key, val); 
 			}
 		})
 	}
 } 
-
-// var lambdaCreate = tree => {
-// 	var lambda = treeToArr(tree); 
-
-// 	var list = lambda[0]; 
-// 	var exp = lambda[1]; 
-	
-// }
-
-
 
 
 // Q 
