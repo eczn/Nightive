@@ -1,7 +1,7 @@
 // main.js
 var config = {
 	el: '#time',
-	end: new Date("2017-5-15 22:00:00"),
+	end: new Date("2017-7-17 22:00:00"),
 	height: window.innerHeight,
 	width: window.innerWidth,
 	marginTop: 128,
