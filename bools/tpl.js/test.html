@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ title }}</title>
+	<link rel="stylesheet" href="./main.css">
+</head>
+<body>
+	<header>
+		{{ title }}
+	</header>
+	
+	<ul><!-- outter -->
+	{{ get (q1, i1) >>>> list }}
+		<ul><!-- inner -->
+		{{ get (q2, i2) >>>> list }}
+			<li bigger={{ isBigger q1 q2 }}>{{ q1 }} * {{ q2 }} = {{ mul q1 q2 }}</li>
+		{{ teg }}
+		</ul>
+	{{ teg }}
+	</ul> 
+</body>
+</html>
