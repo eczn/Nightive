@@ -30,6 +30,33 @@ var getEval = (syntaxs, scopes) => {
 	return res; 
 }
 
+
+var ifEval = (syntaxs, scopes) => {
+	var how2if = syntaxs.o; 
+	var itTrue = renderEval(how2if.key, scopes); 
+	var whereElse = syntaxs.reduce((acc, cur, idx) => {
+		if (cur.token.todo === 'else'){
+			return idx; 
+		} else {
+			return acc; 
+		}
+	}); 
+
+	var temp; 
+
+	if (itTrue) {
+		temp = syntaxs.slice(0, whereElse); 
+	} else {
+		// 不包括 else 自己 
+		temp = syntaxs.slice(whereElse + 1); 
+	}
+
+	// console.log(temp); 
+
+
+	return sytaxer(temp, scopes); 
+}
+
 var renderEval = (key, scopes) => {
 	var findInScopes = key => find(key, scopes); 
 	var opt = find(key[0], scopes); 
@@ -50,8 +77,14 @@ function sytaxer(syntaxs, scopes){
 	// 求值 
 	return syntaxs.reduce((acc, syntax) => {
 		if (Array.isArray(syntax)){
-			// get 块 
-			return acc + getEval(syntax, scopes); 
+			
+			if (syntax.o.todo === 'get'){
+				// get 语句  
+				return acc + getEval(syntax, scopes); 
+			} else {
+				// if 语句 
+				return acc + ifEval(syntax, scopes); 
+			}
 		} else {
 			// 叶子 
 			if (syntax.isCode) {

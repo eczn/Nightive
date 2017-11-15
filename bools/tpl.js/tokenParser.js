@@ -45,6 +45,19 @@ module.exports = token => {
 		temp = {
 			todo: 'teg'
 		}
+	} else if (halfTokens[0] === 'if'){
+		temp = {
+			todo: 'if', 
+			key: halfTokens.slice(1)
+		}
+	} else if (halfTokens[0] === 'else'){
+		temp = {
+			todo: 'else'
+		}
+	} else if (halfTokens[0] === 'fi'){
+		temp = {
+			todo: 'fi'
+		}
 	} else {
 		temp = {
 			todo: 'render', 

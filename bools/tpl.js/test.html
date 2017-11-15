@@ -14,10 +14,16 @@
 	{{ get (q1, i1) >>>> list }}
 		<ul><!-- inner -->
 		{{ get (q2, i2) >>>> list }}
-			<li bigger={{ isBigger q1 q2 }}>{{ q1 }} * {{ q2 }} = {{ mul q1 q2 }}</li>
+			<li bigger="{{ isBigger q1 q2 }}">{{ q1 }} * {{ q2 }} = {{ mul q1 q2 }}</li>
 		{{ teg }}
 		</ul>
 	{{ teg }}
 	</ul> 
+
+	{{ if show }}
+		确实如此
+	{{ else }}
+		然而并不是这样
+	{{ fi }}
 </body>
 </html>

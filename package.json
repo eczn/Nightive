@@ -1,0 +1,23 @@
+{
+  "name": "nightive",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eczn/Nightive.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eczn/Nightive/issues"
+  },
+  "homepage": "https://github.com/eczn/Nightive#readme",
+  "dependencies": {
+    "accounting": "^0.4.1",
+    "ramda": "^0.24.1"
+  }
+}

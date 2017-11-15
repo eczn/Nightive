@@ -7,7 +7,7 @@ var syntaxParser = codeTokens => {
 		  , { isCode, token } = codeToken; 
 
 		if (isCode){
-			if (token.todo === 'get'){
+			if (token.todo === 'get' || token.todo === 'if'){
 				deep = deep + 1; 
 				if (deep === 1){
 					let temp = syntaxParser(
@@ -16,7 +16,7 @@ var syntaxParser = codeTokens => {
 					temp.o = token; 
 					res.push(temp); 
 				}
-			} else if (token.todo === 'teg') {
+			} else if (token.todo === 'teg' || token.todo === 'fi') {
 				deep = deep - 1; 
 				if (deep < 0) return res; 
 			} else {
